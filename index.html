@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="uz">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#100b18">
-    <meta name="description" content="Ism yozing, yurak animatsiyasini tomosha qiling va musiqali videoni yuklab oling.">
-    <title>Yuragimdan — ismli sevgi animatsiyasi</title>
+    <meta name="description" content="Create a personalized love animation, add your name, and download a video with music.">
+    <title>From My Heart — Personalized Love Animation</title>
     <style>
       :root {
         color-scheme: dark;
@@ -343,39 +343,39 @@
   <body>
     <div class="page">
       <header>
-        <div class="brand"><span class="brand-mark" aria-hidden="true">♥</span><span>Yuragimdan</span></div>
-        <div class="header-note">Har bir yurakda bir ism bor</div>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">♥</span><span>From My Heart</span></div>
+        <div class="header-note">Every heart holds a name</div>
       </header>
 
       <main>
         <section class="intro" aria-labelledby="page-title">
-          <p class="eyebrow">Mehr bilan yaratilgan</p>
-          <h1 id="page-title">Ismni yozing.<br><span>Yurakni jonlantiring.</span></h1>
-          <p class="description">Videodagidek, kod belgilaridan ko‘z shakli hosil bo‘ladi va tasvir qorachig‘iga yaqinlashadi. Kodli yurak ichida siz kiritgan ism paydo bo‘ladi. Kuy bilan tomosha qiling yoki video qilib saqlang.</p>
+          <p class="eyebrow">Made with love</p>
+          <h1 id="page-title">Your name.<br><span>Written in a heartbeat.</span></h1>
+          <p class="description">Watch lines of code form an eye as the camera drifts toward its glowing iris. Inside, a heart made of code reveals the name you choose. Enjoy the original music, or save the animation as a video.</p>
 
-          <label class="name-label" for="name-input">Yuragingizdagi insonning ismi</label>
+          <label class="name-label" for="name-input">Someone special’s name</label>
           <div class="name-field">
             <span aria-hidden="true">♡</span>
-            <input id="name-input" type="text" maxlength="24" autocomplete="name" placeholder="Masalan, Malika" aria-describedby="field-hint">
+            <input id="name-input" type="text" maxlength="24" autocomplete="name" placeholder="For example, Alex" aria-describedby="field-hint">
           </div>
-          <p class="field-hint" id="field-hint">1–24 ta belgi. Ism animatsiya boshida ko‘rinadi.</p>
+          <p class="field-hint" id="field-hint">Enter 1–24 characters. Their name appears at the start.</p>
 
           <div class="actions">
-            <button class="button button-primary" id="play-button" type="button"><span class="action-icon" aria-hidden="true">▶</span>Animatsiyani ko‘rish</button>
-            <button class="button button-secondary" id="record-button" type="button"><span class="action-icon" aria-hidden="true">↓</span>Video yaratish</button>
-            <button class="button button-secondary button-music" id="music-button" type="button" aria-pressed="true"><span class="action-icon" aria-hidden="true">♫</span>Musiqa yoqilgan</button>
+            <button class="button button-primary" id="play-button" type="button"><span class="action-icon" aria-hidden="true">▶</span>Play animation</button>
+            <button class="button button-secondary" id="record-button" type="button"><span class="action-icon" aria-hidden="true">↓</span>Create video</button>
+            <button class="button button-secondary button-music" id="music-button" type="button" aria-pressed="true"><span class="action-icon" aria-hidden="true">♫</span>Music on</button>
           </div>
-          <p class="status" id="status" role="status" aria-live="polite">Boshlash uchun ismni yozing. Video 9:16 formatda saqlanadi.</p>
-          <a class="save-link" id="save-link" hidden>⬇ Videoni qurilmaga saqlash</a>
+          <p class="status" id="status" role="status" aria-live="polite">Enter a name to begin. Your video will be saved in portrait format.</p>
+          <a class="save-link" id="save-link" hidden>⬇ Download your video</a>
         </section>
 
-        <section class="preview" aria-label="Animatsiya oldindan ko‘rish">
+        <section class="preview" aria-label="Animation preview">
           <div class="preview-top">
-            <span class="live-label"><span class="live-dot" aria-hidden="true"></span>Jonli namuna</span>
-            <button class="button button-secondary button-music" id="preview-music-button" type="button" aria-label="Musiqani yoqish yoki o‘chirish" aria-pressed="true">♫</button>
+            <span class="live-label"><span class="live-dot" aria-hidden="true"></span>Live preview</span>
+            <button class="button button-secondary button-music" id="preview-music-button" type="button" aria-label="Toggle music" aria-pressed="true">♫</button>
           </div>
-          <div class="aspect-wrap"><canvas id="scene" width="720" height="1280" aria-label="Kod belgilaridan hosil bo‘lgan ko‘z va ism yozilgan yurak animatsiyasi"></canvas></div>
-          <p class="preview-caption">Video telefon va kompyuter uchun tik formatda tayyorlanadi.</p>
+          <div class="aspect-wrap"><canvas id="scene" width="720" height="1280" aria-label="An eye formed from code, revealing a heart with your name"></canvas></div>
+          <p class="preview-caption">A portrait video, made for phones and desktops.</p>
         </section>
       </main>
     </div>
@@ -863,7 +863,7 @@
           musicEnabled = enabled;
           musicButton.setAttribute("aria-pressed", String(enabled));
           previewMusicButton.setAttribute("aria-pressed", String(enabled));
-          musicButton.innerHTML = `<span class="action-icon" aria-hidden="true">${enabled ? "♫" : "♩"}</span>Musiqa ${enabled ? "yoqilgan" : "o‘chirilgan"}`;
+          musicButton.innerHTML = `<span class="action-icon" aria-hidden="true">${enabled ? "♫" : "♩"}</span>Music ${enabled ? "on" : "off"}`;
           previewMusicButton.textContent = enabled ? "♫" : "♩";
           if (!enabled) stopMusic();
           else if (isPlaying) startMusic();
@@ -875,17 +875,17 @@
           recordButton.disabled = busy;
           nameInput.disabled = busy;
           playButton.innerHTML = isPlaying && !isRecording
-            ? '<span class="action-icon" aria-hidden="true">…</span>Animatsiya ketmoqda'
-            : '<span class="action-icon" aria-hidden="true">▶</span>Animatsiyani ko‘rish';
+            ? '<span class="action-icon" aria-hidden="true">…</span>Playing animation'
+            : '<span class="action-icon" aria-hidden="true">▶</span>Play animation';
           recordButton.innerHTML = isRecording
-            ? '<span class="action-icon" aria-hidden="true">●</span>Video yozilmoqda…'
-            : '<span class="action-icon" aria-hidden="true">↓</span>Video yaratish';
+            ? '<span class="action-icon" aria-hidden="true">●</span>Recording video…'
+            : '<span class="action-icon" aria-hidden="true">↓</span>Create video';
         }
 
         async function startAnimation(record) {
           currentName = cleanName();
           if (!currentName) {
-            nameInput.setCustomValidity("Iltimos, avval ism yozing.");
+            nameInput.setCustomValidity("Please enter a name first.");
             nameInput.reportValidity();
             nameInput.addEventListener("input", () => nameInput.setCustomValidity(""), { once: true });
             nameInput.focus();
@@ -903,7 +903,7 @@
           if (record) {
             try {
               if (!window.MediaRecorder || !canvas.captureStream) {
-                throw new Error("Bu brauzer video yozishni qo‘llab-quvvatlamaydi. Iltimos, Chrome, Edge yoki Safari’ning yangiroq versiyasidan foydalaning.");
+                throw new Error("This browser does not support video recording. Please use a recent version of Chrome, Edge, or Safari.");
               }
               captureStream = canvas.captureStream(FPS);
               if (musicEnabled && musicReady && recordingDestination) {
@@ -921,7 +921,7 @@
                 ["video/webm", "webm"]
               ];
               const selected = formats.find(([mime]) => MediaRecorder.isTypeSupported(mime));
-              if (!selected) throw new Error("Brauzer video formatini yozishni qo‘llab-quvvatlamaydi.");
+              if (!selected) throw new Error("This browser does not support a compatible video format.");
               options.mimeType = selected[0];
               recorder = new MediaRecorder(captureStream, options);
               const chunks = [];
@@ -932,14 +932,14 @@
                 const mime = recorder.mimeType || selected[0];
                 const blob = new Blob(chunks, { type: mime });
                 if (!blob.size) {
-                  setStatus("Video fayli yaratilmadi. Iltimos, brauzer ruxsatlarini tekshirib qayta urinib ko‘ring.");
+                  setStatus("The video file could not be created. Check your browser permissions and try again.");
                 } else {
                   const extension = mime.includes("mp4") ? "mp4" : "webm";
                   saveLink.href = URL.createObjectURL(blob);
-                  saveLink.download = `yuragimdan-${safeFileName(currentName)}.${extension}`;
-                  saveLink.textContent = `⬇ Videoni qurilmaga saqlash (${extension.toUpperCase()})`;
+                  saveLink.download = `from-my-heart-${safeFileName(currentName)}.${extension}`;
+                  saveLink.textContent = `⬇ Download your video (${extension.toUpperCase()})`;
                   saveLink.hidden = false;
-                  setStatus("Video tayyor. Yuklab olish uchun tugmani bosing.");
+                  setStatus("Your video is ready. Click below to download it.");
                 }
                 isRecording = false;
                 recorder = null;
@@ -950,10 +950,10 @@
                 }
               }, { once: true });
               recorder.addEventListener("error", () => {
-                setStatus("Videoni yozishda xatolik yuz berdi. Boshqa brauzerda qayta urinib ko‘ring.");
+                setStatus("Something went wrong while recording. Please try again in another browser.");
               }, { once: true });
               recorder.start(250);
-              setStatus("Animatsiya va musiqa videoga yozilmoqda. Bu taxminan 12 soniya davom etadi…");
+              setStatus("Recording the animation and music. This takes about 12 seconds…");
             } catch (error) {
               if (captureStream) {
                 for (const track of captureStream.getTracks()) track.stop();
@@ -963,22 +963,22 @@
               isPlaying = false;
               stopMusic();
               updateButtons();
-              setStatus(error instanceof Error ? error.message : "Video yozishni boshlash imkoni bo‘lmadi.");
+              setStatus(error instanceof Error ? error.message : "Could not start recording.");
               return;
             }
           } else {
             setStatus(musicReady
-              ? "Ism ko‘rinmoqda, kodli ko‘z qorachig‘iga yaqinlashmoqda va kuy yangramoqda…"
+              ? "Your name appears as the camera glides toward the coded iris, with music playing…"
               : musicEnabled
-                ? "Bu brauzerda audio ishlamaydi; animatsiya musiqasiz davom etmoqda."
-                : "Ism ko‘rinmoqda, kodli ko‘z qorachig‘iga yaqinlashmoqda…");
+                ? "Audio is unavailable in this browser; the animation is playing without music."
+                : "Your name appears as the camera glides toward the coded iris…");
           }
         }
 
         function safeFileName(name) {
           const normalized = name.normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
           const safe = normalized.replace(/[^a-zA-Z0-9_-]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 30);
-          return safe || "ism";
+          return safe || "name";
         }
 
         function finishAnimation() {
@@ -989,7 +989,7 @@
           if (recorder && recorder.state !== "inactive") recorder.stop();
           if (!wasRecording) {
             updateButtons();
-            setStatus("Animatsiya tugadi. Qayta ko‘rish uchun tugmani bosing.");
+            setStatus("The animation has ended. Press play to watch it again.");
           }
         }
 

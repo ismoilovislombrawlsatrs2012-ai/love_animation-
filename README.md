@@ -1,15 +1,15 @@
-# Yuragimdan
+# From My Heart
 
-Kod matritsasi ko‘z shakliga kiradi, tasvir ko‘z qorachig‘iga yaqinlashadi va yurak belgilar bilan qorachiq ichida chiziladi. Kiritilgan ism videoning boshida va kodli yurak markazida ko‘rinadi. Multfilm yoki rasmli ko‘z ishlatilmaydi. Animatsiya Web Audio API orqali yaratilgan kuy bilan ijro etiladi; video eksporti brauzer qo‘llaydigan MP4 yoki WebM formatida amalga oshadi.
+Lines of code form an eye as the camera moves toward its iris, where a heart made of code reveals the name you enter. The name appears at the start of the video and inside the coded heart. The animation uses no cartoon or photographic eye. An original melody is generated with the Web Audio API; videos are exported as MP4 or WebM, depending on browser support.
 
-## Ishga tushirish
+## Run locally
 
-`index.html` faylini zamonaviy brauzerda oching yoki loyiha papkasidan statik web-server ishga tushiring. Ismni kiriting va animatsiyani ko‘ring. **Video yaratish** tugmasi 12 soniyalik, 9:16 formatdagi animatsiyani yozadi; tayyor faylni saqlash tugmasi yozuv tugagach ko‘rinadi.
+Open `index.html` in a modern browser or start a static web server in the project directory. Enter a name to preview the animation. **Create video** records a 12-second animation in 9:16 portrait format; a download link appears when recording finishes.
 
-Loyiha framework, tashqi resurs yoki backend talab qilmaydi. Audio va video yozib olish uchun brauzer JavaScript, Web Audio, Canvas `captureStream` va `MediaRecorder` imkoniyatlarini qo‘llab-quvvatlashi kerak. Yangi Safari/iOS, Chrome/Android hamda Chrome/Edge/Windows brauzerlarida MP4 yoki WebM formati avtomatik tanlanadi. HTTPS yoki `localhost` orqali ishga tushirish tavsiya etiladi.
+The project requires no framework, external assets, or backend. Audio and video recording require browser support for JavaScript, Web Audio, Canvas `captureStream`, and `MediaRecorder`. MP4 or WebM is selected automatically in current versions of Safari on iOS, Chrome on Android, and Chrome or Edge on Windows. HTTPS or `localhost` is recommended.
 
-## Onlayn havola
+## Live site
 
-GitHub Pages sayti: <https://ismoilovislombrawlsatrs2012-ai.github.io/love_animation-/>
+GitHub Pages: <https://ismoilovislombrawlsatrs2012-ai.github.io/love_animation-/>
 
-`main` yoki animatsiya branchiga o‘zgarishlar yuborilganda sayt avtomatik yangilanadi.
+The site deploys automatically when changes are pushed to `main` or the animation branch.

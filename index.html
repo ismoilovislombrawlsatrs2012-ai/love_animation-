@@ -1,0 +1,1010 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#100b18">
+    <meta name="description" content="Ism yozing, yurak animatsiyasini tomosha qiling va musiqali videoni yuklab oling.">
+    <title>Yuragimdan — ismli sevgi animatsiyasi</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #100b18;
+        color: #fff7fb;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        --muted: #b7a9ba;
+        --pink: #ff74ad;
+        --line: rgb(255 255 255 / 10%);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background:
+          radial-gradient(ellipse at 9% 12%, rgb(114 37 91 / 22%), transparent 35rem),
+          radial-gradient(ellipse at 92% 84%, rgb(63 44 131 / 18%), transparent 36rem),
+          #100b18;
+      }
+
+      button, input { font: inherit; }
+      button, a { -webkit-tap-highlight-color: transparent; }
+
+      .page {
+        width: min(1120px, 100%);
+        min-height: 100svh;
+        margin: 0 auto;
+        padding: 28px clamp(18px, 5vw, 56px) 36px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding-bottom: 22px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        font-size: 15px;
+        font-weight: 720;
+        letter-spacing: .01em;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border: 1px solid rgb(255 116 173 / 27%);
+        border-radius: 13px;
+        background: rgb(255 116 173 / 9%);
+        color: #ff91bb;
+        font-size: 19px;
+      }
+
+      .header-note {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: minmax(0, .9fr) minmax(300px, 1fr);
+        align-items: center;
+        gap: clamp(32px, 7vw, 86px);
+        padding-top: clamp(32px, 6vh, 68px);
+      }
+
+      .intro { max-width: 480px; }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin: 0 0 17px;
+        color: #ff9ac2;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .13em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 22px;
+        height: 1px;
+        background: #ff78ad;
+        content: "";
+      }
+
+      h1 {
+        max-width: 460px;
+        margin: 0;
+        font-size: clamp(36px, 5.3vw, 63px);
+        font-weight: 730;
+        letter-spacing: -.055em;
+        line-height: 1.04;
+      }
+
+      h1 span {
+        color: #ff86b4;
+        text-shadow: 0 0 30px rgb(255 93 161 / 25%);
+      }
+
+      .description {
+        max-width: 420px;
+        margin: 20px 0 30px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      .name-label {
+        display: block;
+        margin-bottom: 10px;
+        color: #f7eaf1;
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .name-field {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        width: 100%;
+        max-width: 400px;
+        padding: 0 15px;
+        border: 1px solid rgb(255 255 255 / 13%);
+        border-radius: 14px;
+        background: rgb(255 255 255 / 4%);
+        transition: border-color .2s, box-shadow .2s;
+      }
+
+      .name-field:focus-within {
+        border-color: rgb(255 116 173 / 65%);
+        box-shadow: 0 0 0 4px rgb(255 116 173 / 9%);
+      }
+
+      .name-field span { color: #ff86b4; font-size: 17px; }
+
+      input {
+        width: 100%;
+        min-width: 0;
+        height: 52px;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: #fff7fb;
+        font-size: 15px;
+      }
+
+      input::placeholder { color: #867788; }
+
+      .field-hint {
+        margin: 8px 0 20px;
+        color: #96889a;
+        font-size: 12px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        max-width: 440px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 0 17px;
+        border: 1px solid transparent;
+        border-radius: 13px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 680;
+        text-decoration: none;
+        transition: transform .18s, filter .18s, border-color .18s;
+      }
+
+      .button:hover:not(:disabled) { filter: brightness(1.09); transform: translateY(-1px); }
+      .button:focus-visible { outline: 2px solid #ffc0d8; outline-offset: 3px; }
+      .button:disabled { cursor: wait; opacity: .63; }
+
+      .button-primary {
+        background: linear-gradient(135deg, #ff6fa7, #d94d91);
+        box-shadow: 0 9px 24px rgb(220 64 132 / 21%);
+        color: #210c19;
+      }
+
+      .button-secondary {
+        border-color: var(--line);
+        background: rgb(255 255 255 / 4%);
+        color: #f9edf4;
+      }
+
+      .button-music {
+        min-height: 40px;
+        padding-inline: 13px;
+        color: #e8dce6;
+      }
+
+      .button-music[aria-pressed="true"] { border-color: rgb(255 116 173 / 34%); color: #ff9bc3; }
+      .action-icon { font-size: 16px; }
+
+      .status {
+        min-height: 24px;
+        margin: 14px 0 0;
+        color: #d7c8d6;
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .save-link {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        margin-top: 7px;
+        padding: 0 14px;
+        border: 1px solid rgb(255 116 173 / 35%);
+        border-radius: 12px;
+        background: rgb(255 116 173 / 9%);
+        color: #ffabc9;
+        font-size: 13px;
+        font-weight: 650;
+        text-decoration: none;
+      }
+
+      .save-link[hidden] { display: none; }
+
+      .preview { width: min(100%, 430px); justify-self: center; }
+
+      .preview-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 5px 12px;
+        color: #d7c6d5;
+        font-size: 12px;
+      }
+
+      .live-label { display: inline-flex; align-items: center; gap: 8px; }
+
+      .live-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #ff78ad;
+        box-shadow: 0 0 12px #ff78ad;
+      }
+
+      .aspect-wrap {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9 / 16;
+        border: 1px solid rgb(255 224 236 / 15%);
+        border-radius: 26px;
+        background:
+          radial-gradient(ellipse at 50% 43%, rgb(58 37 41 / 26%), transparent 58%),
+          #08080b;
+        box-shadow: 0 30px 100px rgb(0 0 0 / 42%), 0 0 55px rgb(220 119 117 / 9%);
+      }
+
+      canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .aspect-wrap::after {
+        position: absolute;
+        z-index: 1;
+        border: 1px solid rgb(255 239 231 / 4%);
+        border-radius: inherit;
+        content: "";
+        inset: 5px;
+        pointer-events: none;
+      }
+
+      .preview-caption {
+        margin: 12px 4px 0;
+        color: #95869a;
+        font-size: 11px;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      @media (min-width: 1100px) and (min-height: 800px) {
+        .aspect-wrap { max-height: min(72svh, 700px); }
+        .preview { width: min(100%, 394px); }
+      }
+
+      @media (max-width: 760px) {
+        .page { padding: 18px 18px max(26px, env(safe-area-inset-bottom)); }
+        header { padding-bottom: 16px; }
+        .header-note { font-size: 11px; }
+        main {
+          grid-template-columns: 1fr;
+          gap: 30px;
+          padding-top: 31px;
+        }
+        .intro { max-width: 540px; margin-inline: auto; }
+        h1 { max-width: 520px; font-size: clamp(37px, 9.5vw, 54px); }
+        .description { margin: 14px 0 21px; font-size: 14px; }
+        .name-field { max-width: none; }
+        .field-hint { margin-bottom: 15px; }
+        .actions .button { flex: 1 1 150px; }
+        .preview { width: min(100%, 380px); }
+        .aspect-wrap { max-height: none; }
+      }
+
+      @media (max-width: 380px) {
+        .header-note { display: none; }
+        .actions .button { flex-basis: 100%; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; }
+        .button { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="brand"><span class="brand-mark" aria-hidden="true">♥</span><span>Yuragimdan</span></div>
+        <div class="header-note">Har bir yurakda bir ism bor</div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">Mehr bilan yaratilgan</p>
+          <h1 id="page-title">Ismni yozing.<br><span>Yurakni jonlantiring.</span></h1>
+          <p class="description">Videodagidek, kod belgilaridan ko‘z shakli hosil bo‘ladi va tasvir qorachig‘iga yaqinlashadi. Kodli yurak ichida siz kiritgan ism paydo bo‘ladi. Kuy bilan tomosha qiling yoki video qilib saqlang.</p>
+
+          <label class="name-label" for="name-input">Yuragingizdagi insonning ismi</label>
+          <div class="name-field">
+            <span aria-hidden="true">♡</span>
+            <input id="name-input" type="text" maxlength="24" autocomplete="name" placeholder="Masalan, Malika" aria-describedby="field-hint">
+          </div>
+          <p class="field-hint" id="field-hint">1–24 ta belgi. Ism animatsiya boshida ko‘rinadi.</p>
+
+          <div class="actions">
+            <button class="button button-primary" id="play-button" type="button"><span class="action-icon" aria-hidden="true">▶</span>Animatsiyani ko‘rish</button>
+            <button class="button button-secondary" id="record-button" type="button"><span class="action-icon" aria-hidden="true">↓</span>Video yaratish</button>
+            <button class="button button-secondary button-music" id="music-button" type="button" aria-pressed="true"><span class="action-icon" aria-hidden="true">♫</span>Musiqa yoqilgan</button>
+          </div>
+          <p class="status" id="status" role="status" aria-live="polite">Boshlash uchun ismni yozing. Video 9:16 formatda saqlanadi.</p>
+          <a class="save-link" id="save-link" hidden>⬇ Videoni qurilmaga saqlash</a>
+        </section>
+
+        <section class="preview" aria-label="Animatsiya oldindan ko‘rish">
+          <div class="preview-top">
+            <span class="live-label"><span class="live-dot" aria-hidden="true"></span>Jonli namuna</span>
+            <button class="button button-secondary button-music" id="preview-music-button" type="button" aria-label="Musiqani yoqish yoki o‘chirish" aria-pressed="true">♫</button>
+          </div>
+          <div class="aspect-wrap"><canvas id="scene" width="720" height="1280" aria-label="Kod belgilaridan hosil bo‘lgan ko‘z va ism yozilgan yurak animatsiyasi"></canvas></div>
+          <p class="preview-caption">Video telefon va kompyuter uchun tik formatda tayyorlanadi.</p>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      (() => {
+        "use strict";
+
+        const WIDTH = 720;
+        const HEIGHT = 1280;
+        const DURATION = 12;
+        const FPS = 30;
+        const canvas = document.getElementById("scene");
+        const ctx = canvas.getContext("2d", { alpha: false });
+        const nameInput = document.getElementById("name-input");
+        const playButton = document.getElementById("play-button");
+        const recordButton = document.getElementById("record-button");
+        const musicButton = document.getElementById("music-button");
+        const previewMusicButton = document.getElementById("preview-music-button");
+        const status = document.getElementById("status");
+        const saveLink = document.getElementById("save-link");
+
+        let currentName = "";
+        let startedAt = 0;
+        let isPlaying = false;
+        let hasFinished = false;
+        let isRecording = false;
+        let musicEnabled = true;
+        let audioContext = null;
+        let masterGain = null;
+        let recordingDestination = null;
+        let musicTimer = null;
+        let recorder = null;
+        let captureStream = null;
+        let lastRenderedAt = 0;
+
+        const stars = Array.from({ length: 155 }, (_, index) => {
+          const x = ((index * 127.1 + 31.7) % WIDTH);
+          const y = ((index * 311.7 + 17.3) % HEIGHT);
+          const size = 1 + ((index * 19) % 17) / 10;
+          const phase = ((index * 37) % 101) / 13;
+          return { x, y, size, phase, speed: .5 + (index % 7) * .17 };
+        });
+
+        const melody = [
+          523.25, 659.25, 783.99, 659.25, 587.33, 698.46, 880, 783.99,
+          523.25, 659.25, 783.99, 987.77, 880, 783.99, 659.25, 587.33
+        ];
+        const BEAT = .42;
+
+        function setStatus(message) {
+          status.textContent = message;
+        }
+
+        function cleanName() {
+          return nameInput.value.trim().replace(/\s+/g, " ");
+        }
+
+        function monospaceTextSize(text, maxWidth, startingSize) {
+          let size = startingSize;
+          ctx.font = `700 ${size}px "Courier New", monospace`;
+          while (ctx.measureText(text).width > maxWidth && size > 22) {
+            size -= 2;
+            ctx.font = `700 ${size}px "Courier New", monospace`;
+          }
+          return size;
+        }
+
+        function drawBackground(time, showStars = true) {
+          const background = ctx.createLinearGradient(0, 0, WIDTH, HEIGHT);
+          background.addColorStop(0, "#0b090b");
+          background.addColorStop(.55, "#07090c");
+          background.addColorStop(1, "#100a0c");
+          ctx.fillStyle = background;
+          ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+          const glow = ctx.createRadialGradient(360, 638, 20, 360, 638, 560);
+          glow.addColorStop(0, "rgba(121, 55, 31, .18)");
+          glow.addColorStop(.55, "rgba(48, 34, 36, .1)");
+          glow.addColorStop(1, "rgba(8, 7, 13, 0)");
+          ctx.fillStyle = glow;
+          ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+          if (showStars) {
+            for (const star of stars) {
+              const flicker = .32 + .68 * ((Math.sin(time * star.speed + star.phase) + 1) / 2);
+              ctx.globalAlpha = flicker;
+              ctx.fillStyle = star.size > 2.3 ? "#ffe0ee" : "#c5b4db";
+              ctx.beginPath();
+              ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+              ctx.fill();
+              if (star.size > 2.3 && flicker > .82) {
+                ctx.strokeStyle = `rgba(255, 213, 232, ${flicker * .45})`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(star.x - 6, star.y);
+                ctx.lineTo(star.x + 6, star.y);
+                ctx.moveTo(star.x, star.y - 6);
+                ctx.lineTo(star.x, star.y + 6);
+                ctx.stroke();
+              }
+            }
+            ctx.globalAlpha = 1;
+          }
+        }
+
+        function smoothStep(value) {
+          const progress = Math.min(1, Math.max(0, value));
+          return progress * progress * (3 - 2 * progress);
+        }
+
+        function drawCodeEye(time, zoom, openness) {
+          const centerX = WIDTH / 2;
+          const centerY = 660;
+          const columns = Math.ceil(WIDTH / 9);
+          const screenLineHeight = 15;
+          const screenColumnWidth = 9;
+          const glyphScale = 1 / zoom;
+          const characters = "0123456789abcdefxyzABCDEF{}[]<>/\\=_+-*";
+          const colors = ["#754e3a", "#a66b3c", "#e9c18c", "#eee4d3", "#fffaf0", "#e8a057", "#94552e", "#382322", "#09090d", "#ff96b8"];
+          const frame = Math.floor(time * 8);
+
+          ctx.save();
+          ctx.translate(centerX, centerY);
+          ctx.scale(zoom, zoom);
+          ctx.translate(-centerX, -centerY);
+
+          ctx.font = `${12 * glyphScale}px "Courier New", monospace`;
+          ctx.textBaseline = "top";
+          for (let row = 0, screenY = 100; screenY < 1190; row++, screenY += screenLineHeight) {
+            const y = centerY + (screenY - centerY) * glyphScale;
+            const ny = (screenY - centerY) / (205 * zoom * Math.max(.12, openness));
+            let runColor = "";
+            let runText = "";
+            let runX = 0;
+
+            for (let column = 0; column < columns; column++) {
+              const screenX = column * screenColumnWidth;
+              const x = centerX + (screenX - centerX) * glyphScale;
+              const nx = (screenX - centerX) / (312 * zoom);
+              const eyeWidth = Math.sqrt(Math.max(0, 1 - nx * nx));
+              const eyePosition = Math.abs(ny) / (.79 * eyeWidth);
+              const insideEye = Math.abs(nx) < 1 && eyePosition < 1;
+              const irisRadius = Math.hypot(
+                (screenX - centerX) / (122 * zoom),
+                (screenY - centerY) / (111 * zoom)
+              );
+              const pupilRadius = Math.hypot(
+                (screenX - centerX) / (59 * zoom),
+                (screenY - centerY) / (57 * zoom)
+              );
+              const characterIndex = (row * 73 + column * 29 + frame * 11 + Math.floor(time * 2)) % characters.length;
+              const character = characters[characterIndex];
+              let colorIndex;
+
+              if (!insideEye) {
+                colorIndex = (row + Math.floor(column / 9) + Math.floor(time * 2)) % 6 === 0 ? 1 : 0;
+              } else if (eyePosition > .87) {
+                colorIndex = 7;
+              } else if (pupilRadius < 1) {
+                colorIndex = pupilRadius > .84 ? 9 : 8;
+              } else if (irisRadius < 1) {
+                colorIndex = irisRadius > .82 ? 5 : (row + column) % 3 === 0 ? 6 : 5;
+              } else {
+                colorIndex = (row + Math.floor(column / 4)) % 3 === 0 ? 4 : 3;
+              }
+
+              const color = colors[colorIndex];
+              if (color !== runColor) {
+                if (runText) {
+                  ctx.fillStyle = runColor;
+                  ctx.fillText(runText, runX, y);
+                }
+                runColor = color;
+                runText = character;
+                runX = x;
+              } else {
+                runText += character;
+              }
+            }
+
+            if (runText) {
+              ctx.fillStyle = runColor;
+              ctx.fillText(runText, runX, y);
+            }
+          }
+
+          ctx.globalAlpha = .68;
+          ctx.lineWidth = 1.2;
+          ctx.setLineDash([4, 8]);
+          ctx.strokeStyle = "#ffca94";
+          ctx.beginPath();
+          ctx.ellipse(centerX, centerY, 131, 118, 0, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.globalAlpha = .8;
+          ctx.fillStyle = "#ffe5c5";
+          ctx.shadowColor = "#ffca94";
+          ctx.shadowBlur = 18;
+          ctx.beginPath();
+          ctx.arc(centerX - 25, centerY - 30, 5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          ctx.globalAlpha = .48;
+          ctx.strokeStyle = "#f4d2b2";
+          ctx.lineWidth = 1;
+          for (const [x, y, direction] of [
+            [centerX - 154, centerY, -1],
+            [centerX + 154, centerY, 1],
+            [centerX, centerY - 143, 0],
+            [centerX, centerY + 143, 0]
+          ]) {
+            ctx.beginPath();
+            if (direction === 0) {
+              ctx.moveTo(x, y - 5);
+              ctx.lineTo(x, y + 5);
+            } else {
+              ctx.moveTo(x - 5, y);
+              ctx.lineTo(x + 5, y);
+            }
+            ctx.stroke();
+          }
+          ctx.globalAlpha = 1;
+
+          ctx.restore();
+        }
+
+        function drawCodeHeart(time, scale) {
+          const centerX = WIDTH / 2;
+          const centerY = 660;
+          const symbols = "01xyz*+<>/\\{}[]";
+          const lineHeight = 15;
+
+          ctx.save();
+          ctx.translate(centerX, centerY);
+          ctx.scale(scale, scale);
+          ctx.translate(-centerX, -centerY);
+          ctx.font = '600 14px "Courier New", monospace';
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+
+          for (let row = -13; row <= 13; row++) {
+            let code = "";
+            for (let column = -19; column <= 19; column++) {
+              const x = (column / 17) * 1.2;
+              const y = (-row / 11) * 1.15;
+              const shape = (x * x + y * y - 1) ** 3 - x * x * y ** 3;
+              const index = row * 73 + column * 31;
+              code += shape <= 0
+                ? symbols[(index % symbols.length + symbols.length) % symbols.length]
+                : " ";
+            }
+
+            if (code.trim()) {
+              const shimmer = .84 + .16 * ((Math.sin(time * 1.8 + row * .7) + 1) / 2);
+              ctx.globalAlpha = shimmer;
+              ctx.fillStyle = row % 4 === 0 ? "#ffd0bb" : "#ff8e9f";
+              ctx.shadowColor = "rgba(255, 108, 140, .58)";
+              ctx.shadowBlur = 9;
+              ctx.fillText(code, centerX, centerY + row * lineHeight);
+            }
+          }
+
+          ctx.globalAlpha = 1;
+          ctx.shadowBlur = 0;
+          ctx.font = '11px "Courier New", monospace';
+          ctx.fillStyle = "rgba(255, 210, 221, .72)";
+          ctx.fillText("01  /  CONNECTED BY HEART", centerX, centerY + 69);
+
+          ctx.globalAlpha = 1;
+          ctx.shadowColor = "rgba(255, 224, 231, .75)";
+          ctx.shadowBlur = 24;
+          const titleSize = Math.min(48, monospaceTextSize(currentName || "<3", 300, 46));
+          ctx.font = `600 ${titleSize}px Georgia, "Times New Roman", serif`;
+          ctx.fillStyle = "#fff6ee";
+          ctx.fillText(currentName || "<3", centerX, centerY + 2);
+          ctx.restore();
+        }
+
+        function drawFrame(time, elapsed) {
+          const intro = isPlaying
+            ? smoothStep(elapsed / .38) * (1 - smoothStep((elapsed - 2.2) / .8))
+            : 0;
+          const zoomProgress = isPlaying ? smoothStep((elapsed - 2.2) / 2.6) : hasFinished ? 1 : 0;
+          const idleHeart = Boolean(currentName) && !isPlaying;
+          const eyeOpacity = hasFinished
+            || idleHeart
+            ? 0
+            : isPlaying
+              ? 1 - smoothStep((elapsed - 4.5) / .8)
+              : 1;
+          const eyeOpenness = isPlaying ? smoothStep(elapsed / .75) : 1;
+          const reveal = hasFinished || idleHeart
+            ? 1
+            : isPlaying
+              ? smoothStep((elapsed - 4.9) / 1.8)
+              : 0;
+          const pulse = isPlaying ? 1 + .026 * Math.sin(elapsed * 3.15) : 1;
+          const heartScale = hasFinished || idleHeart ? 1 : .72 + .28 * reveal;
+          const showStars = hasFinished || idleHeart || (isPlaying && elapsed >= 4.7);
+
+          drawBackground(time, showStars);
+
+          if (eyeOpacity > .01) {
+            ctx.save();
+            ctx.globalAlpha = eyeOpacity;
+            drawCodeEye(time, 1 + zoomProgress * 6.4, eyeOpenness);
+            ctx.restore();
+          }
+
+          if (currentName && intro > .01) {
+            ctx.globalAlpha = intro;
+            ctx.shadowColor = "rgba(255, 112, 166, .9)";
+            ctx.shadowBlur = 22;
+            ctx.fillStyle = "#ff91b8";
+            ctx.font = `700 ${monospaceTextSize(currentName, 520, 52)}px "Courier New", monospace`;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(currentName, WIDTH / 2, 320);
+            ctx.shadowBlur = 0;
+            ctx.fillStyle = "#bc7953";
+            ctx.font = '14px "Courier New", monospace';
+            ctx.fillText("// initializing heart.exe", WIDTH / 2, 365);
+            ctx.globalAlpha = 1;
+          }
+
+          if (reveal > 0) {
+            drawCodeHeart(time, pulse * heartScale);
+          }
+
+          const outroAlpha = hasFinished ? 1 : isPlaying ? smoothStep((elapsed - 6.4) / .7) : 0;
+          if (outroAlpha > .01) {
+            ctx.save();
+            ctx.globalAlpha = outroAlpha * .72;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.font = '13px "Courier New", monospace';
+            ctx.fillStyle = "#c17b56";
+            ctx.fillText(`// ${currentName || "my"}_heart.exe`, WIDTH / 2, 1060);
+            ctx.restore();
+          }
+
+          if (!currentName && !hasFinished) {
+            ctx.fillStyle = "rgba(255, 242, 248, .5)";
+            ctx.font = '500 16px "Courier New", monospace';
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText("TYPE A NAME TO BEGIN", WIDTH / 2, 1190);
+          }
+
+          drawInterface(elapsed, time);
+        }
+
+        function drawInterface(elapsed, time) {
+          const progress = isPlaying ? Math.min(1, elapsed / DURATION) : hasFinished ? 1 : 0;
+          const remaining = Math.min(DURATION, Math.floor(isPlaying ? elapsed : hasFinished ? DURATION : 0));
+          const timestamp = `00:${String(remaining).padStart(2, "0")} / 00:12`;
+          const signal = progress > .46 ? "SIGNAL FOUND" : progress > 0 ? "SCANNING" : "STANDBY";
+
+          ctx.save();
+          const top = ctx.createLinearGradient(0, 0, 0, 100);
+          top.addColorStop(0, "rgba(6, 6, 9, .88)");
+          top.addColorStop(1, "rgba(6, 6, 9, 0)");
+          ctx.fillStyle = top;
+          ctx.fillRect(0, 0, WIDTH, 104);
+
+          const bottom = ctx.createLinearGradient(0, HEIGHT - 130, 0, HEIGHT);
+          bottom.addColorStop(0, "rgba(6, 6, 9, 0)");
+          bottom.addColorStop(1, "rgba(6, 6, 9, .92)");
+          ctx.fillStyle = bottom;
+          ctx.fillRect(0, HEIGHT - 130, WIDTH, 130);
+
+          ctx.textBaseline = "middle";
+          ctx.font = '600 13px "Courier New", monospace';
+          ctx.fillStyle = "rgba(255, 232, 225, .9)";
+          ctx.textAlign = "left";
+          ctx.fillText("Y U R A G I M D A N", 46, 52);
+          ctx.textAlign = "right";
+          ctx.fillStyle = "rgba(246, 191, 157, .76)";
+          ctx.fillText(signal, WIDTH - 46, 52);
+
+          ctx.strokeStyle = "rgba(255, 231, 221, .17)";
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(46, 78);
+          ctx.lineTo(WIDTH - 46, 78);
+          ctx.stroke();
+
+          ctx.textAlign = "left";
+          ctx.fillStyle = "rgba(235, 206, 194, .65)";
+          ctx.font = '11px "Courier New", monospace';
+          ctx.fillText("A LITTLE STORY WRITTEN IN CODE", 46, HEIGHT - 63);
+          ctx.textAlign = "right";
+          ctx.fillText(timestamp, WIDTH - 46, HEIGHT - 63);
+
+          ctx.fillStyle = "rgba(255, 239, 230, .17)";
+          ctx.fillRect(46, HEIGHT - 40, WIDTH - 92, 1);
+          ctx.fillStyle = "rgba(239, 159, 143, .9)";
+          ctx.fillRect(46, HEIGHT - 40, (WIDTH - 92) * progress, 1);
+
+          const shimmerX = 46 + ((time * 26) % (WIDTH - 92));
+          if (isPlaying) {
+            ctx.globalAlpha = .5;
+            ctx.fillStyle = "#ffb9a2";
+            ctx.fillRect(shimmerX, HEIGHT - 42, 2, 5);
+          }
+          ctx.restore();
+        }
+
+        function render(now) {
+          const elapsed = isPlaying
+            ? Math.max(0, (now - startedAt) / 1000)
+            : hasFinished
+              ? DURATION
+              : 0;
+          if (now - lastRenderedAt < 1000 / FPS - 1) {
+            requestAnimationFrame(render);
+            return;
+          }
+          lastRenderedAt = now;
+          drawFrame(now / 1000, elapsed);
+          if (isPlaying && elapsed >= DURATION) finishAnimation();
+          requestAnimationFrame(render);
+        }
+
+        function playTone(frequency, startTime, duration, volume, type) {
+          const oscillator = audioContext.createOscillator();
+          const envelope = audioContext.createGain();
+          oscillator.type = type;
+          oscillator.frequency.setValueAtTime(frequency, startTime);
+          envelope.gain.setValueAtTime(.0001, startTime);
+          envelope.gain.exponentialRampToValueAtTime(volume, startTime + .025);
+          envelope.gain.exponentialRampToValueAtTime(.0001, startTime + duration);
+          oscillator.connect(envelope);
+          envelope.connect(masterGain);
+          oscillator.start(startTime);
+          oscillator.stop(startTime + duration + .03);
+        }
+
+        async function startMusic() {
+          if (!musicEnabled) return;
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) {
+            return false;
+          }
+          if (!audioContext) {
+            audioContext = new AudioContextClass();
+            masterGain = audioContext.createGain();
+            masterGain.gain.value = .0001;
+            masterGain.connect(audioContext.destination);
+            recordingDestination = audioContext.createMediaStreamDestination();
+            masterGain.connect(recordingDestination);
+          }
+          if (audioContext.state === "suspended") await audioContext.resume();
+          masterGain.gain.setTargetAtTime(.25, audioContext.currentTime, .04);
+          clearInterval(musicTimer);
+          const phraseLength = melody.length * BEAT;
+          const playPhrase = () => {
+            if (!isPlaying || !musicEnabled) return;
+            const firstBeat = audioContext.currentTime + .06;
+            melody.forEach((frequency, index) => {
+              const at = firstBeat + index * BEAT;
+              playTone(frequency, at, .34, .12, "sine");
+              if (index % 4 === 0) playTone(frequency / 2, at, .6, .045, "triangle");
+            });
+          };
+          playPhrase();
+          musicTimer = window.setInterval(playPhrase, phraseLength * 1000);
+          return true;
+        }
+
+        function stopMusic() {
+          clearInterval(musicTimer);
+          musicTimer = null;
+          if (masterGain && audioContext) {
+            const now = audioContext.currentTime;
+            masterGain.gain.cancelScheduledValues(now);
+            masterGain.gain.setTargetAtTime(.0001, now, .04);
+          }
+        }
+
+        function setMusic(enabled) {
+          musicEnabled = enabled;
+          musicButton.setAttribute("aria-pressed", String(enabled));
+          previewMusicButton.setAttribute("aria-pressed", String(enabled));
+          musicButton.innerHTML = `<span class="action-icon" aria-hidden="true">${enabled ? "♫" : "♩"}</span>Musiqa ${enabled ? "yoqilgan" : "o‘chirilgan"}`;
+          previewMusicButton.textContent = enabled ? "♫" : "♩";
+          if (!enabled) stopMusic();
+          else if (isPlaying) startMusic();
+        }
+
+        function updateButtons() {
+          const busy = isPlaying || isRecording;
+          playButton.disabled = busy;
+          recordButton.disabled = busy;
+          nameInput.disabled = busy;
+          playButton.innerHTML = isPlaying && !isRecording
+            ? '<span class="action-icon" aria-hidden="true">…</span>Animatsiya ketmoqda'
+            : '<span class="action-icon" aria-hidden="true">▶</span>Animatsiyani ko‘rish';
+          recordButton.innerHTML = isRecording
+            ? '<span class="action-icon" aria-hidden="true">●</span>Video yozilmoqda…'
+            : '<span class="action-icon" aria-hidden="true">↓</span>Video yaratish';
+        }
+
+        async function startAnimation(record) {
+          currentName = cleanName();
+          if (!currentName) {
+            nameInput.setCustomValidity("Iltimos, avval ism yozing.");
+            nameInput.reportValidity();
+            nameInput.addEventListener("input", () => nameInput.setCustomValidity(""), { once: true });
+            nameInput.focus();
+            return;
+          }
+          if (saveLink.href.startsWith("blob:")) URL.revokeObjectURL(saveLink.href);
+          saveLink.removeAttribute("href");
+          saveLink.hidden = true;
+          isRecording = record;
+          isPlaying = true;
+          hasFinished = false;
+          startedAt = performance.now();
+          updateButtons();
+          const musicReady = musicEnabled ? await startMusic() : false;
+          if (record) {
+            try {
+              if (!window.MediaRecorder || !canvas.captureStream) {
+                throw new Error("Bu brauzer video yozishni qo‘llab-quvvatlamaydi. Iltimos, Chrome, Edge yoki Safari’ning yangiroq versiyasidan foydalaning.");
+              }
+              captureStream = canvas.captureStream(FPS);
+              if (musicEnabled && musicReady && recordingDestination) {
+                for (const track of recordingDestination.stream.getAudioTracks()) captureStream.addTrack(track);
+              }
+              const options = {};
+              const formats = [
+                ["video/mp4;codecs=avc1.42E01E,mp4a.40.2", "mp4"],
+                ["video/mp4;codecs=avc1.42E01E", "mp4"],
+                ["video/mp4", "mp4"],
+                ["video/webm;codecs=vp8,opus", "webm"],
+                ["video/webm;codecs=vp9,opus", "webm"],
+                ["video/webm;codecs=vp9", "webm"],
+                ["video/webm;codecs=vp8", "webm"],
+                ["video/webm", "webm"]
+              ];
+              const selected = formats.find(([mime]) => MediaRecorder.isTypeSupported(mime));
+              if (!selected) throw new Error("Brauzer video formatini yozishni qo‘llab-quvvatlamaydi.");
+              options.mimeType = selected[0];
+              recorder = new MediaRecorder(captureStream, options);
+              const chunks = [];
+              recorder.addEventListener("dataavailable", (event) => {
+                if (event.data.size > 0) chunks.push(event.data);
+              });
+              recorder.addEventListener("stop", () => {
+                const mime = recorder.mimeType || selected[0];
+                const blob = new Blob(chunks, { type: mime });
+                if (!blob.size) {
+                  setStatus("Video fayli yaratilmadi. Iltimos, brauzer ruxsatlarini tekshirib qayta urinib ko‘ring.");
+                } else {
+                  const extension = mime.includes("mp4") ? "mp4" : "webm";
+                  saveLink.href = URL.createObjectURL(blob);
+                  saveLink.download = `yuragimdan-${safeFileName(currentName)}.${extension}`;
+                  saveLink.textContent = `⬇ Videoni qurilmaga saqlash (${extension.toUpperCase()})`;
+                  saveLink.hidden = false;
+                  setStatus("Video tayyor. Yuklab olish uchun tugmani bosing.");
+                }
+                isRecording = false;
+                recorder = null;
+                updateButtons();
+                if (captureStream) {
+                  for (const track of captureStream.getTracks()) track.stop();
+                  captureStream = null;
+                }
+              }, { once: true });
+              recorder.addEventListener("error", () => {
+                setStatus("Videoni yozishda xatolik yuz berdi. Boshqa brauzerda qayta urinib ko‘ring.");
+              }, { once: true });
+              recorder.start(250);
+              setStatus("Animatsiya va musiqa videoga yozilmoqda. Bu taxminan 12 soniya davom etadi…");
+            } catch (error) {
+              if (captureStream) {
+                for (const track of captureStream.getTracks()) track.stop();
+                captureStream = null;
+              }
+              isRecording = false;
+              isPlaying = false;
+              stopMusic();
+              updateButtons();
+              setStatus(error instanceof Error ? error.message : "Video yozishni boshlash imkoni bo‘lmadi.");
+              return;
+            }
+          } else {
+            setStatus(musicReady
+              ? "Ism ko‘rinmoqda, kodli ko‘z qorachig‘iga yaqinlashmoqda va kuy yangramoqda…"
+              : musicEnabled
+                ? "Bu brauzerda audio ishlamaydi; animatsiya musiqasiz davom etmoqda."
+                : "Ism ko‘rinmoqda, kodli ko‘z qorachig‘iga yaqinlashmoqda…");
+          }
+        }
+
+        function safeFileName(name) {
+          const normalized = name.normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
+          const safe = normalized.replace(/[^a-zA-Z0-9_-]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 30);
+          return safe || "ism";
+        }
+
+        function finishAnimation() {
+          const wasRecording = isRecording;
+          isPlaying = false;
+          hasFinished = true;
+          stopMusic();
+          if (recorder && recorder.state !== "inactive") recorder.stop();
+          if (!wasRecording) {
+            updateButtons();
+            setStatus("Animatsiya tugadi. Qayta ko‘rish uchun tugmani bosing.");
+          }
+        }
+
+        playButton.addEventListener("click", () => startAnimation(false));
+        recordButton.addEventListener("click", () => startAnimation(true));
+        musicButton.addEventListener("click", () => setMusic(!musicEnabled));
+        previewMusicButton.addEventListener("click", () => setMusic(!musicEnabled));
+        nameInput.addEventListener("input", () => {
+          currentName = cleanName();
+          if (!isPlaying) drawFrame(performance.now() / 1000, hasFinished ? DURATION : 0);
+        });
+
+        drawFrame(0, 0);
+        requestAnimationFrame(render);
+      })();
+    </script>
+  </body>
+</html>
